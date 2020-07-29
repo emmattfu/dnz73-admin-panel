@@ -1,8 +1,16 @@
-import React from "react";
-import { Table, Button } from "react-bootstrap";
+import React from "react"
+import { Table, Button } from "react-bootstrap"
+import {Link} from 'react-router-dom'
+import firebase from '../firebase'
 
 const InfoTable = ({ data }) => {
-  console.log(data);
+  const db = firebase.firestore()
+  
+  const removeNews = (e) => {
+    db.collection('news').doc(e.target.value).delete()
+  }
+
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -19,8 +27,8 @@ const InfoTable = ({ data }) => {
               <td>{el.title}</td>
               <td>дата</td>
               <td>
-                  <Button>Корегувати</Button>
-                  <Button variant="danger">Видалити</Button>
+                  <Button value={el.id}><Link to={`news/update/${el.id}`}>Корегувати</Link></Button>
+                  <Button variant="danger" value={el.id} onClick={removeNews}>Видалити</Button>
               </td>
             </tr>
           );
