@@ -1,13 +1,12 @@
 import React from "react"
 import { Table, Button } from "react-bootstrap"
 import {Link} from 'react-router-dom'
-import firebase from '../firebase'
+import {projectFirestore} from '../firebase'
 
 const InfoTable = ({ data }) => {
-  const db = firebase.firestore()
   
   const removeNews = (e) => {
-    db.collection('news').doc(e.target.value).delete()
+    projectFirestore.collection('news').doc(e.target.value).delete()
   }
 
 

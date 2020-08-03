@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import firebase from "../firebase";
+import {projectFirestore} from "../firebase";
 
 const NewsUpdate = ({ match }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const id = match.params.id;
-  
+
   useEffect(() => {
-    
-    firebase
-      .firestore()
+    projectFirestore
       .collection("news")
       .get()
       .then((snapshot) => {
@@ -31,22 +29,21 @@ const NewsUpdate = ({ match }) => {
   }
 
   function submitHandle(e) {
-      e.preventDefault()
-      firebase.firestore().collection('news').doc(id).update({
-          title,
-          text
-      })
-
+    e.preventDefault();
+    projectFirestore.collection("news").doc(id).update({
+      title,
+      text,
+    });
   }
 
   if (!title || !text) {
-      return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
   return (
     <Form onSubmit={submitHandle}>
       <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
+        <Form.Label>Заголовок новини</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -56,8 +53,11 @@ const NewsUpdate = ({ match }) => {
         />
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
+        <Form.Label>Текст для новини</Form.Label>
         <Form.Control as="textarea" rows="6" defaultValue={text} />
+      </Form.Group>
+      <Form.Group>
+        <Form.File id="exampleFormControlFile1" label="Example file input" />
       </Form.Group>
       <Button variant="primary" type="submit">
         Зберегти

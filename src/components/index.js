@@ -1,2 +1,2 @@
 export {default as Header} from './Header'
-export {default as Table} from './InfoTable'
+export {default as InfoTable} from './InfoTable'
