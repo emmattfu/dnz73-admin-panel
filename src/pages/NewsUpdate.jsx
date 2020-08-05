@@ -56,9 +56,6 @@ const NewsUpdate = ({ match }) => {
         <Form.Label>Текст для новини</Form.Label>
         <Form.Control as="textarea" rows="6" defaultValue={text} />
       </Form.Group>
-      <Form.Group>
-        <Form.File id="exampleFormControlFile1" label="Example file input" />
-      </Form.Group>
       <Button variant="primary" type="submit">
         Зберегти
       </Button>

@@ -5,7 +5,9 @@ export const useNews = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-       const usubscribe = projectFirestore.collection('news').onSnapshot((snapshot) => {
+       const usubscribe = projectFirestore.collection('news')
+       .orderBy('createdAt', 'desc')
+       .onSnapshot((snapshot) => {
             const newData = snapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()

@@ -9,6 +9,7 @@ const InfoTable = ({ data }) => {
     projectFirestore.collection('news').doc(e.target.value).delete()
   }
 
+  console.log(data)
 
   return (
     <Table striped bordered hover>
@@ -23,11 +24,11 @@ const InfoTable = ({ data }) => {
         {data.map((el) => {
           return (
             <tr key={el.id}>
-              <td>{el.title}</td>
-              <td>дата</td>
+              <td style={{width: "50%"}}>{el.title}</td>
+              <td>{new Date(el.createdAt.seconds * 1000).toLocaleString()}</td>
               <td>
-                  <Button value={el.id}><Link to={`news/update/${el.id}`}>Корегувати</Link></Button>
-                  <Button variant="danger" value={el.id} onClick={removeNews}>Видалити</Button>
+                  <Button className="edit-btn" value={el.id}><Link to={`news/update/${el.id}`}>Корегувати</Link></Button>
+                  <Button className="delete-btn" variant="danger" value={el.id} onClick={removeNews}>Видалити</Button>
               </td>
             </tr>
           );

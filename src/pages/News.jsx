@@ -9,6 +9,7 @@ const News = () => {
 
   return (
     <>
+      <h2>Список новин</h2>
       <InfoTable data={news} />
       <Link to="/news/create">
         <Button>Додати новину</Button>

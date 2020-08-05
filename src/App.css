@@ -55,6 +55,11 @@ blockquote {
   margin: 0;
 }
 
+
+.content {
+  margin: 40px 0;
+}
+
 /*===== Header styles =====*/
 .header {
   display: flex;
@@ -63,3 +68,10 @@ blockquote {
   color: white
 }
 
+/*===== Header styles end =====*/
+
+
+/*===== InfoTable styles =====*/
+.edit-btn {
+  margin: 0 20px;
+}
