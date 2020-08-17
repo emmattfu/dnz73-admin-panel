@@ -23,7 +23,7 @@ const NewsUpdate = ({ match }) => {
   function onChangeHandle(e) {
     if (e.target.name === "title") {
       setTitle(e.target.value);
-    } else if (e.target.name === "title") {
+    } else if (e.target.name === "text") {
       setText(e.target.value);
     }
   }
@@ -54,7 +54,7 @@ const NewsUpdate = ({ match }) => {
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>Текст для новини</Form.Label>
-        <Form.Control as="textarea" rows="6" defaultValue={text} />
+        <Form.Control as="textarea" name="text" rows="6" value={text} onChange={onChangeHandle}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Зберегти
